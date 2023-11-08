@@ -210,6 +210,9 @@ const insertImages = (list) => {
         imgEl.src =`img/${list[j]}.jpg`;
         imgEl.idName = "random";
         imgEl.style.width='12rem';
+        imgEl.style.width ='200px';
+        imgEl.style.height ='150px';
+        imgEl.style.margin = '2rem';
 
         liEl.appendChild(imgEl);
         imgContainer.appendChild(liEl);
