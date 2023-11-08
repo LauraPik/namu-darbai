@@ -132,30 +132,138 @@
     // }
     
 
-for( i=0; i < 4; i++ ){
-    let div1El = document.createElement('div');
-    div1El.classList="row";
-    document.body.appendChild(div1El);
-    for( j = 0; j< 4; j++){
-        let div2El = document.createElement('div');
-        div2El.classList="column";
-        div2El.style.height ='200px';
-        div2El.style.width ='400px';
-        div2El.style.border = "thick solid #0000CE"
-        div2El.style.backgroundColor =setBg();
-        div1El.appendChild(div2El);
-        div2El.addEventListener('mouseover', ()=>{
-            div2El.style.backgroundColor =setBg();
+// for( i=0; i < 4; i++ ){
+//     let div1El = document.createElement('div');
+//     div1El.classList="row";
+//     document.body.appendChild(div1El);
+//     for( j = 0; j< 4; j++){
+//         let div2El = document.createElement('div');
+//         div2El.classList="column";
+//         div2El.style.height ='200px';
+//         div2El.style.width ='400px';
+//         div2El.style.border = "thick solid #0000CE"
+//         div2El.style.backgroundColor =setBg();
+//         div1El.appendChild(div2El);
+//         div2El.addEventListener('mouseover', ()=>{
+//             div2El.style.backgroundColor =setBg();
         
-        })
+//         })
 
+//     }
+// }
+
+// function setBg() {
+//     const randomColor = Math.floor(Math.random()*16777215).toString(16);
+//     return "#" + randomColor;
+    
+//   }
+// let buttonClicked = document.querySelector('#push');
+
+
+
+// for(i =0; i < 1; i++){
+//     let rowdiv = document.createElement('div');
+//     rowdiv.classList ="row";
+//     document.body.appendChild(rowdiv);
+//     for(j=1; j < 11; j++){
+//         let columndiv = document.createElement("div");
+//         columndiv.style.height ='200px';
+//         columndiv.style.width ='400px';
+//         columndiv.classList = "column";
+//         rowdiv.appendChild(columndiv);
+//         for(t = 0; t < 1; t++){
+//         let imgEl = document.createElement('img');
+//         imgEl.src =`img/${j}.jpg`;
+//         imgEl.idName = "random";
+//         imgEl.style.width='12rem';
+//         columndiv.appendChild(imgEl);
+        
+//         }
+
+
+//     }
+// }
+
+const listOfImages = [1, 2, 3, 4, 5, 6, 7, 8];
+console.log("listOfImages", listOfImages);
+listOfImages.map((a) => {
+    console.log("a: ", a);
+});
+0
+const shuffle = (array) => { 
+    return array.map((a) => ({ sort: Math.random(), value: a }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((a) => a.value); 
+  }; 
+
+const insertImages = (list) => {
+    let imgs = list.length;
+    let imgContainer = document.getElementById("list");
+        imgContainer.innerHTML = "";
+
+    for(let j=0; j<imgs; j++){
+        let liEl = document.createElement("li");
+        liEl.style.display ='inline';
+        // li.style.width ='400px';
+
+        let imgEl = document.createElement('img');
+        imgEl.src =`img/${list[j]}.jpg`;
+        imgEl.idName = "random";
+        imgEl.style.width='12rem';
+
+        liEl.appendChild(imgEl);
+        imgContainer.appendChild(liEl);
+    }
+    // console.log("imgs", imgs);
+}
+// console.log(listOfImages);
+insertImages(listOfImages);
+
+let onClickDoStuff = function(toDo){
+    if(toDo == 1){
+        // suffle img list
+        insertImages(shuffle(listOfImages));
+    } else if(toDo == 2){
+        // restore img list
+        insertImages(listOfImages);
     }
 }
 
-function setBg() {
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
-    return "#" + randomColor;
-    
-  }
+// Click for suffle
+document.getElementById("push")
+    .addEventListener("click", function(){ onClickDoStuff(1)});
+
+// Click for restore
+document.getElementById("push1")
+    .addEventListener("click", function(){ onClickDoStuff(2)});
 
   
+// var ImgDoubleClicked = document.querySelectorAll('img');
+// console.log(shuffle(ImgDoubleClicked));
+// console.log(ImgDoubleClicked)
+
+// let onMouseMove = function(){
+//     console.log("dasdasd");
+//     ImgDoubleClicked.textContent = 'meow';
+
+// }
+
+// document.getElementById("push").addEventListener("click", onMouseMove);
+
+
+// let galery = document.querySelectorAll('img')
+
+// console.log(galery)
+// for(let i=galery.length; i>=0; i--){
+//     i =  Math.floor(Math.random()*i);  
+//  }
+
+// buttonClicked.addEventListener('click', (e)=>{
+//     e.preventDefault();
+//     for(let i=galery.length; i>=0; i--){
+//        let randomImg =  Math.floor(Math.random()*i);
+//        document.querySelectorAll('img').innerHTML= randomImg;
+
+//     }
+// })
+
